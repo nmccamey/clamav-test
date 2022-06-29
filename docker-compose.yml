@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  # The clamd. Note, not clamav. This is the daemon that runs. Use another one to run freshclam to update the signatures 
+  clamav-pri:
+    container_name: clamav-pri
+    hostname: clamav-pri
+    build:
+      context: ./clamav
+      dockerfile: Dockerfile
+      args:
+        TYPE: primary
+    volumes:
+      - ./signatures/:/var/lib/clamav/
+  clamav-sec:
+    container_name: clamav-sec
+    hostname: clamav-sec
+    build:
+      context: ./clamav
+      dockerfile: Dockerfile
+      args:
+        TYPE: secondary
+    volumes:
+      - ./signatures/:/var/lib/clamav/
+  test:
+    build:
+      context: ./test
+      dockerfile: Dockerfile
+    volumes:
+     - ./test/code/:/code/
