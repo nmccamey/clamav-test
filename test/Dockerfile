@@ -13,7 +13,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
         vim \
         curl \
         wget \
-        sudo
+        sudo \
+        netcat
 
 # RUN apt-get -y install net-tools iputils-ping clamdscan
 RUN apt-get -y install clamdscan

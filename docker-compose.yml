@@ -11,7 +11,7 @@ services:
       args:
         TYPE: primary
     volumes:
-      - ./signatures/:/var/lib/clamav/
+      - ./signatures_pri/:/var/lib/clamav/
   clamav-sec:
     container_name: clamav-sec
     hostname: clamav-sec
@@ -21,7 +21,7 @@ services:
       args:
         TYPE: secondary
     volumes:
-      - ./signatures/:/var/lib/clamav/
+      - ./signatures_sec/:/var/lib/clamav/
   test:
     build:
       context: ./test
